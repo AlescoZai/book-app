@@ -2,7 +2,7 @@
 const books = require('./books')
 const { nanoid } = require('nanoid')
 
-const addBook = (request, h) => {
+const addBuku = (request, h) => {
   const { name, year, author, summary, publisher, pageCount, readPage, reading } = request.payload
   const id = nanoid(16)
   const insertedAt = new Date().toISOString()
@@ -71,7 +71,7 @@ const addBook = (request, h) => {
   return resp
 }
 
-const getBooks = (request, h) => {
+const getBukus = (request, h) => {
   const booksIsAny = books.length
   const { reading } = request.query
   const { finished } = request.query
@@ -171,7 +171,7 @@ const getBooks = (request, h) => {
   }
 }
 
-const getBookById = (request, h) => {
+const getBukuById = (request, h) => {
   const { bookId } = request.params
   const book = books.filter((book) => book.id === bookId)[0]
 
@@ -207,7 +207,7 @@ const getBookById = (request, h) => {
   }
 }
 
-const updateBook = (request, h) => {
+const updateBuku = (request, h) => {
   const { bookId } = request.params
   const { name, year, author, summary, publisher, pageCount, readPage, reading } = request.payload
   const updatedAt = new Date().toISOString()
@@ -251,7 +251,7 @@ const updateBook = (request, h) => {
   }
 }
 
-const deleteBook = (request, h) => {
+const deleteBuku = (request, h) => {
   const { bookId } = request.params
   const index = books.findIndex((book) => book.id === bookId)
 
@@ -270,4 +270,4 @@ const deleteBook = (request, h) => {
   }
 }
 
-module.exports = { getBooks, addBook, getBookById, updateBook, deleteBook }
+module.exports = { getBukus, addBuku, getBukuById, updateBuku, deleteBuku }
